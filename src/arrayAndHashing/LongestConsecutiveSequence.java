@@ -1,6 +1,8 @@
 package arrayAndHashing;
 
+import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Map;
 import java.util.Set;
 
 public class LongestConsecutiveSequence
@@ -9,7 +11,7 @@ public class LongestConsecutiveSequence
 	{
 		int[] nums = {2,20,4,10,3,4,5};
 //		int[] nums = {0,3,2,5,4,6,1,1};
-		System.out.println(longestConsecutive(nums));
+		System.out.println(longestConsecutive1(nums));
 	}
 
 	private static int longestConsecutive(int[] nums)
@@ -43,5 +45,26 @@ public class LongestConsecutiveSequence
 		}
 
 		return longestSeq;
+	}
+
+	private static int longestConsecutive1(int[] nums)
+	{
+		Map<Integer, Integer> numToSeqMap = new HashMap<>();
+		int highestNum = -1;
+		for (int num : nums)
+		{
+			if (!numToSeqMap.containsKey(num))
+			{
+				int curr = 0;
+				numToSeqMap.put(num, numToSeqMap.getOrDefault(num - 1, 0) + numToSeqMap.getOrDefault(num + 1, 0) + 1);
+				curr = numToSeqMap.get(num);
+				numToSeqMap.put(num - numToSeqMap.getOrDefault(num - 1,0), curr);
+				numToSeqMap.put(num + numToSeqMap.getOrDefault(num + 1,0), curr);
+
+				if (curr > highestNum)
+					highestNum = curr;
+			}
+		}
+		return highestNum;
 	}
 }

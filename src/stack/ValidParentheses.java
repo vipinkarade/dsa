@@ -36,19 +36,19 @@ public class ValidParentheses
 				if (closingVal.contains(curr))
 					return false;
 				else
-					stack.addLast(curr);
+					stack.push(curr);
 			}
 			else
 			{
 				if (closingVal.contains(curr))
 				{
-					if (stack.getLast() == refMap.get(curr))
-						stack.removeLast();
+					if (stack.get(stack.size() - 1) == refMap.get(curr))
+						stack.pop();
 					else
 						return false;
 				}
 				else
-					stack.addLast(curr);
+					stack.push(curr);
 			}
 
 		}

@@ -5,7 +5,8 @@ public class FindMinimuminRotatedSortedArray
 	static void main()
 	{
 //		int[] nums = {2,4,5,6,1,2};
-		int[] nums = {2,2};
+		int[] nums = {4,5,0,1,2,3};
+//		int[] nums = {2,2};
 		System.out.println(findMin(nums));
 	}
 
@@ -14,7 +15,7 @@ public class FindMinimuminRotatedSortedArray
 		int l = 0;
 		int r = nums.length - 1;
 
-		while (l <= r)
+		while (l < r)
 		{
 			if (nums[l] < nums[r])
 				return nums[l];
@@ -29,6 +30,6 @@ public class FindMinimuminRotatedSortedArray
 					l = mid + 1;
 			}
 		}
-		return -1;
+		return Math.min(nums[l], nums[r]);
 	}
 }

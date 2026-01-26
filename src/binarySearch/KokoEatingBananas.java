@@ -8,11 +8,11 @@ public class KokoEatingBananas
 	{
 //		int[] piles = {25,10,23,4};
 //		int h = 4;
-		int[] piles = {30,11,23,4,20};
-		int h = 6;
-//		int[] piles = {3,6,7,11};
-//		int h = 8;
-		System.out.println(minEatingSpeed(piles, h));
+//		int[] piles = {30,11,23,4,20};
+//		int h = 6;
+		int[] piles = {3,6,7,11};
+		int h = 8;
+		System.out.println(minEatingSpeed2(piles, h));
 	}
 
 	private static int minEatingSpeed(int[] piles, int h)
@@ -41,5 +41,26 @@ public class KokoEatingBananas
 			}
 		}
 		return result;
+	}
+
+	private static int minEatingSpeed2(int[] piles, int h)
+	{
+		int maxBananaInPile = Arrays.stream(piles).max().getAsInt();
+		int[] result = new int[maxBananaInPile];
+		int ans = 0;
+		for (int i = 1; i <= maxBananaInPile; i++)
+		{
+			int time = 0;
+			for (int pile : piles)
+			{
+				time += Math.ceil((double) pile / i);
+			}
+			if (time <= h)
+				ans = i;
+			result[i - 1] = time;
+		}
+		System.out.println(Arrays.toString(result));
+		return ans;
+
 	}
 }

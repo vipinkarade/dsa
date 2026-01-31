@@ -48,12 +48,16 @@ public class TreeNode
 			{
 				if (leftResult.size() > i)
 					result.add(leftResult.get(i));
+				else
+					result.add(null);
 			}
 
 			for (int i = count - 1; i < 2*count - 1; i++)
 			{
 				if (rightResult.size() > i)
 					result.add(rightResult.get(i));
+				else
+					result.add(null);
 			}
 
 			count *= 2;

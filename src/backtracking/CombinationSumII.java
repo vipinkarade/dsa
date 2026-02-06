@@ -1,4 +1,4 @@
-package binarySearch;
+package backtracking;
 
 import java.util.ArrayList;
 import java.util.HashSet;

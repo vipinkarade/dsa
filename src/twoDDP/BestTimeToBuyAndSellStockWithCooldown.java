@@ -20,7 +20,7 @@ public class BestTimeToBuyAndSellStockWithCooldown
 		if (index >= prices.length)
 			return 0;
 
-		String key = index + "_" + (boughtAt == -1);
+		String key = index + "_" + (boughtAt > -1);
 		if (map.containsKey(key))
 			return map.get(key);
 
@@ -31,7 +31,8 @@ public class BestTimeToBuyAndSellStockWithCooldown
 		if (prices[index] > boughtAt)
 			result = prices[index] - boughtAt + findMax(prices, index + 2, -1, map);
 		result = Math.max(result, findMax(prices, index + 1, boughtAt, map));
-		map.put(key, result);
+		if (boughtAt < 0)
+			map.put(key, result);
 		return result;
 	}
 }

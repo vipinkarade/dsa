@@ -1,8 +1,5 @@
 package twoDDP;
 
-import java.util.HashMap;
-import java.util.Map;
-
 public class CoinChangeII
 {
 	static void main()
